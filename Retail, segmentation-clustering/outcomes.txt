@@ -1,0 +1,42 @@
+InvoiceNo - drop, derive cancellation 0s/1s
+StockCode - drop
+Description - drop
+Quantity - keep
+Invoice Date - transform col -->
+Mo Af Ev Ni, Month, Week, FY QTR,Day of the week
+UnitPrice - keep
+CustomerID - drop
+Country - drop, uk/non-uk
+
+==============================
+final 9 cols in total
+label encode - Mo Af Ev Ni, Month, Week of year,
+FY QTR,Day of the week
+then, apply Scaling to the final data
+run K-means and find the best fit K then
+find the clusters 
+append the cluster ID col to the original data
+and write a new CSV file - send to me on email
+sauveergoel04@gmail.com
+try to profile these clusters, 
+we shall discuss them in detials in the coming session
+
+
+===============================================
+
+Cluster 0 -> AvgQty - 9 | AvgPrice - 4.22 | Q4 | international demand | <0.1% Cancel | thru out the day AND week | winters
+
+Cluster 1 -> AvgQty - 10 | AvgPrice - 4.33 | Q1 Q2 | international demand | <0.1% Cancel | thru out the day AND week | summers
+
+Cluster 2 -> AvgQty - 10 | AvgPrice - 4.40 | Q3 | international demand | <0.1% Cancel | thru out the day AND week | spring
+
+Cluster 3 -> BULK ORDER
+
+Cluster 4 -> RETURN BULK
+
+Cluster5 -> Fees
+
+===================================================
+
+
+Remove the cluster 3,4,5 Rows and on the filtered data perform segmentation again and try to profile them ourself first

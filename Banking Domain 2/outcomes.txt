@@ -1,0 +1,64 @@
+====Data Cleaning Steps====
+
+- age ---> outliers 
+- job ---> club self-employed, entreprenuer, housmaid
+		unknown, unemployed, student
+- marital --> keep
+- education --> keep 
+- default --> drop
+- balance --> outlier
+- housing --> keep
+- loan --> drop
+- contact ---> keep
+- day ----> keep
+- month ---> keep for transformation
+- duration ---> outliers 
+- campaign ----> outliers -- 1 1 2 3 63
+- pdays -----> -1 -1 -1 -1 871 -- drop
+- previous ----> 0 0 0 0 275 -- drop
+- poutcome ----> drop
+
+========Transformation ===========
+
+age ---> Raw, Binning
+month ---> FY Quaters | Q1 - Apr -> Jun || Drop Raw
+Day ---> Raw, Week of the month | 1-7 -> 1st wk
+Balance ---> Raw , Binning, ILATE | 1/x, log X, x^2,x^3,sqrt(x),cubert(x),sin(x),cos(x),e^x
+Duration ---> Raw, Binning, ILATE | 1/x, log X, x^2,x^3,sqrt(x),cubert(x),sin(x),cos(x),e^x
+
+after transformation --> selectKBest method on numerical cols
+
+====================================
+
+3 - High Medium Low
+4 - High, Medium-High, Medium-Low, Low
+5 - High, Medium-High, Medium, Medium-Low, Low
+
+k-means
+3 95 5
+4 60 5 
+5
+6
+7
+
+========Data Prepration ===============
+
+Nominal Vars ---> One-Hot Encoding and Drop the originals
+Ordinal vars ----> Label Encoding
+Numerical vars ----> Do nothing
+
+=======ML Modelling===================
+
+- Linear/Logistic Regression
+- Random Forest
+- Decision Tree
+- SVM (Google Colab) [[LAST]]
+
+=========Evaluation=================
+
+FOR EACH MODEL ABOVE:
+
+- Accuracy - 65%
+- Precision - >= Accuracy
+- Recall - >= Accuracy
+
